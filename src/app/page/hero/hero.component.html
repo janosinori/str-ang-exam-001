@@ -1,0 +1,44 @@
+<div class="row d-flex justify-content-end">
+    <form class="form-inline m-2">
+        <div class="form-group">
+            <div class="form-group row">
+                <label for="search" class="mr-2">Szűrés: </label>
+                <select name="" id="key" class="form-control mr-sm-2" (change)="onChangeKey($event)">
+                    <option value="name">Name</option>
+                </select>
+                <input id="search" (keyup)="onChangePhrase($event)" class="form-control mr-sm-2" type="text" placeholder="Search" [value]="phrase">
+            <!--
+                <label for="search" class="mr-2">Rendezés: </label>
+                <select name="" id="order" class="form-control mr-sm-2" (change)="onChangeOrderOld($event)">
+                    <option value="id">ID</option>
+                    <option value="name">Name</option>
+                    <option value="superPower">SuperPower</option>
+                    <option value="address">Address</option>
+                </select>
+            -->
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><a [routerLink]="" id="id" (click)="onChangeOrder($event)">Id</a></th>
+                    <th><a [routerLink]="" id="name" (click)="onChangeOrder($event)">Name</a></th>
+                    <th><a [routerLink]="" id="superPower" (click)="onChangeOrder($event)">SuperPower</a></th>
+                    <th><a [routerLink]="" id="address" (click)="onChangeOrder($event)">Address</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let hero of heroList$ | async | filter:phrase:key | sorter:order; let _i = index">
+                    <td> {{ hero.id }} </td>
+                    <td> {{ hero.name }} </td>
+                    <td> {{ hero.superPower }} </td>
+                    <td> {{ hero.address }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
